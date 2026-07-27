@@ -400,7 +400,9 @@
                 appData.items[idx] = { ...appData.items[idx], ...updateData }; 
             }
             else { appData.items.push({ id: Date.now(), name, category: document.getElementById('edit-category').value, needed: true, bought: false, stores: storesObj }); }
-            closeModal(); sync();
+            closeModal();
+            state.searchQuery = '';
+            sync();
         }
         function deleteItem() { if(!confirm("Delete?")) return; appData.items = appData.items.filter(i => i.id != document.getElementById('edit-id').value); closeModal(); sync(); }
         function addStore() { let s = prompt("Store name:"); if (s && !appData.stores.includes(s)) { appData.stores.push(s); sync(); }}
